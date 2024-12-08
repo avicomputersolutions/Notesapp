@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            width: auto;
+            height: auto;
+            padding: 5px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+
+        button {
+            background: skyblue;
+            opacity: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/add"><button>Add New Notes</button></a>
+    <br>
+    <table>
+        <thead>
+            <th>Sr.no</th>
+            <th>Title</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+
+            {%for d in data%}
+            <tr>
+
+                <td>{{d.id}}</td>
+                <td>{{d.title}}</td>
+                <td><a href="{{url_for('viewarticle',id=d.id)}}"><button>View</button></a>
+                    <a href="{{url_for('editnotes',id=d.id)}}"><button>Edit</button></a>
+                    <a href="{{url_for('delete',id=d.id)}}"><button>Delete</button></a>
+                </td>
+            </tr>
+            {%endfor%}
+
+
+        </tbody>
+    </table>
+</body>
+
+</html>
